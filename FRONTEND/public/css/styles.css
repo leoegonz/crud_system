@@ -1,0 +1,86 @@
+/* Estilos para el encabezado */
+.header-bar {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #ddd;
+    background: #fff; /* Blanco limpio para un diseño más moderno */
+}
+
+/* Ajustes del campo de búsqueda */
+.header-bar .form-control {
+    max-width: 100%;
+    border-radius: 20px; /* Bordes redondeados */
+}
+
+/* Botón de búsqueda */
+.btn-search {
+    background-color: #ff9fe1;
+    color: #fff;
+    border: none;
+    border-radius: 20px; /* Bordes redondeados */
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-search:hover {
+    background-color: #f999d4;
+}
+
+/* Estilo de botón de salir */
+.btn-salir {
+    background-color: #ff9fe1;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px; /* Bordes redondeados */
+    padding: 5px 15px;
+    transition: background-color 0.3s;
+}
+
+.btn-salir:hover {
+    background-color: #f999d4;
+}
+
+/* Espacio entre los elementos del menú en horizontal */
+.navbar-nav .nav-item {
+    margin-right: 15px; /* Espacio entre elementos */
+}
+
+.navbar-nav .nav-item:last-child {
+    margin-right: 0; /* Sin margen en el último elemento */
+}
+
+/* Distribuir elementos del navbar horizontalmente */
+.navbar {
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
+}
+
+/* Color de fondo rosado claro al hacer hover */
+.navbar-nav .nav-link {
+    color: #555;
+    font-weight: bold;
+    transition: color 0.3s, background-color 0.3s;
+    padding: 10px 15px;
+    border-radius: 20px; /* Bordes redondeados */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ff9fe1;
+    background-color: rgba(255, 159, 225, 0.1);
+}
+
+/* Estilo del jumbotron */
+.jumbotron {
+    background: #ffffff; /* Fondo blanco */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+}
+
+/* Estilos básicos para el formulario de conexión */
+/* Estilos básicos para el formulario de conexión */
+.container {
+    max-width: 400px;
+    margin-top: 50px;
+}
+h2 {
+    text-align: center;
+}
