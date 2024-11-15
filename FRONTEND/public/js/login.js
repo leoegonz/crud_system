@@ -12,7 +12,8 @@ async function connectDatabase() {
         });
 
         if (response.ok) {
-            alert("Conexión exitosa a la base de datos.");
+            //alert("Conexión exitosa a la base de datos.");
+            window.location.href = 'home.html'; // Redirige a home.html en caso de éxito
         } else {
             document.getElementById('error-message').style.display = 'block';
             document.getElementById('error-message').innerText = "Error en la conexión.";
@@ -22,4 +23,3 @@ async function connectDatabase() {
         document.getElementById('error-message').innerText = "Error al conectar.";
     }
 }
-

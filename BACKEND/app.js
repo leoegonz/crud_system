@@ -8,7 +8,9 @@
 
 const express = require('express');
 const path = require('path');
+// Importa los microservicios
 const connectRoute = require('./routes/connect'); // Ruta del microservicio
+const areasRouter = require('./routes/areas'); // Ruta para áreas
 
 const app = express();
 const PORT = 3000;
@@ -19,13 +21,27 @@ app.use(express.json());
 // Sirve archivos estáticos desde la carpeta public
 app.use(express.static(path.join(__dirname, '../frontend/public')));
 
+// Rutas de frontend
 // Ruta principal para mostrar la página de conexión (login)
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/public/login.html'));
 });
 
-// Usar el microservicio de conexión
+app.get('/list_areas', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/public/list_areas.html'));
+});
+
+app.get('/add_area', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/public/add_area.html'));
+});
+
+app.get('/upd_area', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/public/upd_area.html'));
+});
+
+//Rutas de microservicios - Usar el microservicio de conexión
 app.use('/connect', connectRoute);
+app.use('/areas', areasRouter);
 
 // Inicia el servidor
 app.listen(PORT, () => {
