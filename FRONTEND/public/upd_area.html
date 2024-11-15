@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Área</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Actualizar Área</h2>
+        <form id="update-area-form">
+            <label for="area-id">ID del Área:</label>
+            <input type="text" id="area-id" readonly>
+            <label for="area-name">Nombre del Área:</label>
+            <input type="text" id="area-name" required>
+            <button type="submit">Actualizar Área</button>
+            <div id="error-message" class="error-message"></div>
+        </form>
+    </div>
+    <script src="./js/upd_area.js"></script>
+</body>
+</html>
