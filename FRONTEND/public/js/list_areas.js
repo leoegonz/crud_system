@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch(apiUrl, { method: 'GET' })  // Método GET explícito
             .then(response => response.json())
             .then(data => {
-                areasList.innerHTML = data.map(area => `
+                areasList.innerHTML = data.areas.map(area => `
                     <tr>
                         <td>${area.AREA}</td>
                         <td>${area.NOMBRE}</td>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Empleado</title>
+    <link rel="stylesheet" href="./css/add_empleado.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Agregar Nuevo Empleado</h2>
+        <form id="add-empleado-form">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" required>
+
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" required>
+
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" required>
+
+            <label for="pais">País:</label>
+            <select id="pais" required></select> <!-- Select para lista de países -->
+
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="area">Área:</label>
+            <select id="area" required></select> <!-- Select para lista de áreas -->
+
+            <label for="fecha_ingreso">Fecha de Ingreso:</label>
+            <input type="date" id="fecha_ingreso" required>
+
+            <label for="fecha_salida">Fecha de Salida:</label>
+            <input type="date" id="fecha_salida">
+
+            <label for="salario">Salario:</label>
+            <input type="number" id="salario" step="0.01">
+
+            <button type="submit">Agregar Empleado</button>
+            <div id="error-message" class="error-message"></div>
+        </form>
+    </div>
+    <script src="./js/add_empleado.js"></script>
+</body>
+</html>

@@ -1,66 +1,77 @@
-/* Estilos para el encabezado */
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+/* Estilo para el encabezado */
 .header-bar {
     padding: 0.5rem 1rem;
     border-bottom: 1px solid #ddd;
-    background: #fff; /* Blanco limpio para un diseño más moderno */
+    background: #fff;
 }
 
-/* Ajustes del campo de búsqueda */
 .header-bar .form-control {
     max-width: 100%;
-    border-radius: 20px; /* Bordes redondeados */
+    border-radius: 20px;
 }
 
-/* Botón de búsqueda */
-.btn-search {
-    background-color: #ff9fe1;
-    color: #fff;
-    border: none;
-    border-radius: 20px; /* Bordes redondeados */
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.btn-search:hover {
-    background-color: #f999d4;
-}
-
-/* Estilo de botón de salir */
+.btn-search,
 .btn-salir {
-    background-color: #ff9fe1;
+    background-color: #f5bae2;
     color: #fff;
-    font-weight: bold;
     border: none;
-    border-radius: 20px; /* Bordes redondeados */
-    padding: 5px 15px;
+    border-radius: 40px;
+    font-weight: bold;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
     transition: background-color 0.3s;
 }
 
+.btn-search:hover,
 .btn-salir:hover {
     background-color: #f999d4;
 }
 
-/* Espacio entre los elementos del menú en horizontal */
 .navbar-nav .nav-item {
-    margin-right: 15px; /* Espacio entre elementos */
+    margin-right: 15px;
 }
 
 .navbar-nav .nav-item:last-child {
-    margin-right: 0; /* Sin margen en el último elemento */
+    margin-right: 0;
 }
 
-/* Distribuir elementos del navbar horizontalmente */
 .navbar {
-    width: 100%; /* Ocupa todo el ancho de la pantalla */
+    width: 100%;
 }
 
-/* Color de fondo rosado claro al hacer hover */
 .navbar-nav .nav-link {
     color: #555;
     font-weight: bold;
     transition: color 0.3s, background-color 0.3s;
     padding: 10px 15px;
-    border-radius: 20px; /* Bordes redondeados */
+    border-radius: 20px;
 }
 
 .navbar-nav .nav-link:hover {
@@ -68,19 +79,193 @@
     background-color: rgba(255, 159, 225, 0.1);
 }
 
-/* Estilo del jumbotron */
+/* Estilo para el jumbotron */
 .jumbotron {
-    background: #ffffff; /* Fondo blanco */
-    border-radius: 15px; /* Bordes redondeados */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos básicos para el formulario de conexión */
-/* Estilos básicos para el formulario de conexión */
-.container {
-    max-width: 400px;
-    margin-top: 50px;
+/* Estilos para los formularios */
+form {
+    background: #f9f9f900;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: none;
 }
-h2 {
-    text-align: center;
+
+form label {
+    font-size: 1rem;
+    color: #333;
 }
+
+form input {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+form button {
+    background-color: #ff9fe1;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #f999d4;
+}
+
+form .error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+/* Estilo para la tabla de áreas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 1rem;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f9f9f9;
+    font-weight: bold;
+}
+
+table td {
+    background-color: #fff;
+}
+
+/* Estilo para el botón de agregar */
+.add-button {
+    display: inline-block; /* Ajusta el botón al tamaño del contenido */
+    padding: 0.8rem 1.5rem;
+    background-color: #ff9fe1;
+    color: #fff;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    margin-bottom: 1.5rem;
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    width: auto; /* Asegura que el botón no se expanda */
+    max-width: none; /* Desactiva cualquier restricción de ancho */
+    box-sizing: border-box; /* Para asegurarse de que el padding no afecte el tamaño */
+}
+
+.add-button:hover {
+    background-color: #f999d4;
+}
+
+/* Estilos adicionales para las páginas específicas */
+
+/* Estilo para la página add_area.html */
+.add-area-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Estilo para la página list_area.html */
+#areas-list {
+    padding: 0;
+    list-style: none;
+    margin-top: 20px;
+}
+
+#areas-list li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#areas-list li a {
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    background-color: #ff9fe1;
+    color: #fff;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+#areas-list li a:hover {
+    background-color: #f999d4;
+}
+
+/* Estilo para la página upd_area.html */
+#update-area-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Estilos para la página login.html */
+#db-connection-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#db-connection-form .form-group {
+    margin-bottom: 1rem;
+}
+
+#db-connection-form input {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+#db-connection-form button {
+    background-color: #ff9fe1;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#db-connection-form button:hover {
+    background-color: #f999d4;
+}
+
+/* Aseguramos que los formularios se alineen bien en pantallas pequeñas */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    table th, table td {
+        font-size: 0.9rem;
+    }
+
+    /* Aquí eliminamos el 'width: 100%' que estaba afectando el botón */
+    .add-button {
+        /* width: 100%;  <-- Eliminado para que el botón no se estire */
+    }
+}
+
+/*poner cositas para el footer*/
+

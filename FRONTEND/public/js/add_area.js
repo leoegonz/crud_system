@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (data.success) {
                 window.location.href = '/list_areas.html';
             } else {
-                errorMessage.textContent = 'Error al agregar el área.';
+                errorMessage.textContent = 'Error al agregar el área, vuelva a intentar.';
             }
         })
         .catch(error => {

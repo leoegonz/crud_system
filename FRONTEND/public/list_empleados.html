@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Empleados</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a class="navbar-brand" href="/home.html">Prog4</a>
+        <ul class="navbar-nav">
+            <li><a href="/home.html">Inicio</a></li>
+            <li><a href="#" class="active">Empleados</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <h2>Empleados</h2>
+        <a href="add_empleado.html" class="add-button">Agregar Empleado</a>
+        <div id="error-message" class="error-message"></div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Dirección</th>
+                    <th>Teléfono</th>
+                    <th>Email</th>
+                    <th>Acciones</th> 
+                </tr>
+            </thead>
+            <tbody id="empleados-list"></tbody>
+        </table>
+    </div>
+    <script src="./js/list_empleados.js"></script>
+</body>
+</html>
