@@ -25,32 +25,32 @@ const handleDbError = (err, res, action) => {
 router.get('/', async (req, res) => {
     try {
         const connection = await getConnection();
-        const result = await connection.query('SELECT * FROM AREAS ORDER BY NOMBRE');
+        const result = await connection.query('SELECT * FROM EMPLEADOS ORDER BY NOMBRE');
         await connection.close();
-        res.json({ success: true, areas: result });
+        res.json({ success: true, empleados: result });
     } catch (err) {
         //res.status(500).json({ success: false, error: 'Error al obtener áreas.' });
-        handleDbError(err, res, 'fetching areas');  // *** MODIFICACIÓN ***
+        handleDbError(err, res, 'fetching empleados');  // *** MODIFICACIÓN ***
     }
 });
 
 // Nueva ruta GET para obtener los datos de un área específica por su ID
-router.get('/area/:id', async (req, res) => {
+router.get('/empleado/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const connection = await getConnection();
-        const result = await connection.query(`SELECT * FROM AREAS WHERE AREA = ?`, [id]);
+        const result = await connection.query(`SELECT * FROM EMPLEADOS WHERE EMPLEADO = ?`, [id]);
         await connection.close();
 
         if (result.length > 0) {
-            res.json({ success: true, area: result[0] });
+            res.json({ success: true, empleado: result[0] });
         } else {
-            res.json({ success: false, error: 'Área no encontrada. Volver a ingresar' });
+            res.json({ success: false, error: 'Empleado no encontrada. Volver a ingresar' });
         }
     } catch (err) {
         //console.error('Error al obtener el área:', err);
         //res.status(500).json({ success: false, error: 'Error al obtener el área.' });
-        handleDbError(err, res, 'fetching area by ID');  // *** MODIFICACIÓN ***
+        handleDbError(err, res, 'fetching empleados by ID');  // *** MODIFICACIÓN ***
     }
 });
 
@@ -59,12 +59,12 @@ router.post('/add', async (req, res) => {
     const { nombre } = req.body;
     try {
         const connection = await getConnection();
-        await connection.query(`INSERT INTO AREAS (NOMBRE) VALUES (?)`, [nombre]);
+        await connection.query(`INSERT INTO EMPLEADOS (NOMBRE) VALUES (?)`, [nombre]);
         await connection.close();
         res.json({ success: true });
     } catch (err) {
         //res.status(500).json({ success: false, error: 'Error al agregar el área.' });
-        handleDbError(err, res, 'adding area');  // *** MODIFICACIÓN ***
+        handleDbError(err, res, 'adding emepleado');  // *** MODIFICACIÓN ***
     }
 });
 
@@ -74,11 +74,11 @@ router.post('/update/:id', async (req, res) => {
     const { nombre } = req.body;
     try {
         const connection = await getConnection();
-        await connection.query(`UPDATE AREAS SET NOMBRE = ? WHERE AREA = ?`, [nombre, id]);
+        await connection.query(`UPDATE EMPLEADOS SET NOMBRE = ? WHERE EMPLEADO = ?`, [nombre, id]);
         await connection.close();
         res.json({ success: true });
     } catch (err) {
-        handleDbError(err, res, 'updating area');  // *** MODIFICACIÓN ***//res.status(500).json({ success: false, error: 'Error al actualizar el área.' });
+        handleDbError(err, res, 'updating empleado');  // *** MODIFICACIÓN ***//res.status(500).json({ success: false, error: 'Error al actualizar el área.' });
     }
 });
 
@@ -87,11 +87,11 @@ router.delete('/delete/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const connection = await getConnection();
-        await connection.query(`DELETE FROM AREAS WHERE AREA = ?`, [id]);
+        await connection.query(`DELETE FROM EMPLEADO WHERE EMPLEADO = ?`, [id]);
         await connection.close();
         res.json({ success: true });
     } catch (err) {
-        handleDbError(err, res, 'deleting area');  // *** MODIFICACIÓN ***//res.status(500).json({ success: false, error: 'Error al eliminar el área.' });
+        handleDbError(err, res, 'eliminando empleado');  // *** MODIFICACIÓN ***//res.status(500).json({ success: false, error: 'Error al eliminar el área.' });
     }
 });
 

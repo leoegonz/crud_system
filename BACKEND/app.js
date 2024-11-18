@@ -8,9 +8,12 @@
 
 const express = require('express');
 const path = require('path');
+
 // Importa los microservicios
 const connectRoute = require('./routes/connect'); // Ruta del microservicio
 const areasRouter = require('./routes/areas'); // Ruta para áreas
+const empleadosRouter = require('./routes/empleados');  // Ruta para empleados
+//const paisesRouter = require('./routes/paises');  // Ruta para países
 
 const app = express();
 const PORT = 3000;
@@ -39,9 +42,24 @@ app.get('/upd_area', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/public/upd_area.html'));
 });
 
+app.get('/list_empleados', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/public/list_empleados.html'));
+});
+
+app.get('/add_empleado', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/public/add_empleado.html'));
+});
+
+app.get('/upd_empleado', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/public/upd_empleado.html'));
+});
+
+
 //Rutas de microservicios - Usar el microservicio de conexión
 app.use('/connect', connectRoute);
-app.use('/areas', areasRouter);
+app.use('/areas', areasRouter); //ruta para areas
+app.use('/empleados', empleadosRouter); //Ruta para empleados
+//app.use('/paises', paisesRouter); // Ruta para países
 
 // Inicia el servidor
 app.listen(PORT, () => {
