@@ -14,6 +14,9 @@ const connectRoute = require('./routes/connect'); // Ruta del microservicio
 const areasRouter = require('./routes/areas'); // Ruta para áreas
 const empleadosRouter = require('./routes/empleados');  // Ruta para empleados
 const paisesRouter = require('./routes/paises');  // Ruta para países
+const categoriasRouter = require('./routes/categorias');  // Ruta para países
+const marcasRouter = require('./routes/marcas');  // Ruta para marcas
+
 
 const app = express();
 const PORT = 3000;
@@ -69,12 +72,42 @@ app.get('/upd_pais', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/public/upd_pais.html'));
 });
 
+//para categorias
+
+app.get('/list_categorias', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/public/list_categorias.html'));
+});
+
+app.get('/add_categoria', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/public/add_categoria.html'));
+});
+
+app.get('/upd_categoria', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/public/upd_categoria.html'));
+});
+
+//para marcas
+app.get('/list_marcas', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/public/list_marcas.html'));
+});
+
+app.get('/add_marca', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/public/add_marca.html'));
+});
+
+app.get('/upd_marca', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/public/upd_marca.html'));
+});
+
+
 
 //Rutas de microservicios - Usar el microservicio de conexión
 app.use('/connect', connectRoute);
 app.use('/areas', areasRouter); //ruta para areas
 app.use('/empleados', empleadosRouter); //Ruta para empleados
 app.use('/paises', paisesRouter); // Ruta para países
+app.use('/categorias', categoriasRouter); // Ruta para categorias
+app.use('/marcas', marcasRouter); // Ruta para marcas
 
 // Inicia el servidor
 app.listen(PORT, () => {

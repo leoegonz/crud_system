@@ -21,76 +21,74 @@ const handleDbError = (err, res, action) => {
     res.status(500).json({ success: false, error: `Database error while ${action}: ${errorMessage}` });
 };
 
-// Ruta para obtener todos los empleados
+// Ruta para obtener todas las marcas
 router.get('/', async (req, res) => {
     try {
         const connection = await getConnection();
-        const result = await connection.query('SELECT * FROM EMPLEADOS ORDER BY NOMBRE');
+        const result = await connection.query('SELECT * FROM MARCAS ORDER BY NOMBRE');
         await connection.close();
-        res.json({ success: true, empleados: result });
+        res.json({ success: true, marcas: result });
     } catch (err) {
-        handleDbError(err, res, 'fetching empleados'); 
+        handleDbError(err, res, 'fetching marcas');  
     }
 });
 
-// Nueva ruta GET para obtener los datos de un empleade específica por su ID
-router.get('/empleado/:id', async (req, res) => {
+// Nueva ruta GET para obtener los datos de una marca específica por su ID
+router.get('/marca/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const connection = await getConnection();
-        const result = await connection.query(`SELECT * FROM EMPLEADOS WHERE EMPLEADO = ?`, [id]);
+        const result = await connection.query(`SELECT * FROM MARCAS WHERE MARCA = ?`, [id]);
         await connection.close();
 
         if (result.length > 0) {
-            res.json({ success: true, empleado: result[0] });
+            res.json({ success: true, marca: result[0] });
         } else {
-            res.json({ success: false, error: 'Empleado no encontrado. Volver a ingresar' });
+            res.json({ success: false, error: 'Marca no encontrada. Volver a ingresar' });
         }
     } catch (err) {
-
-        handleDbError(err, res, 'fetching empleados by ID');  // *** MODIFICACIÓN ***
+       
+        handleDbError(err, res, 'fetching marca by ID');  // *** MODIFICACIÓN ***
     }
 });
 
-// Ruta para agregar una nuevo empleado
+// Ruta para agregar una nueva marca
 router.post('/add', async (req, res) => {
-    const { nombre, apellido, direccion, pais, telefono, email, area, fecha_ingreso, fecha_salida, salario } = req.body; // recibe nombre apellido direccion
+    const { nombre } = req.body;
     try {
-      const connection = await getConnection();
-      await connection.query(`INSERT INTO EMPLEADOS (NOMBRE, APELLIDO, DIRECCION, PAIS, TELEFONO, EMAIL, AREA, FECHA_INGRESO, FECHA_SALIDA, SALARIO ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [nombre, apellido, direccion, pais, telefono, email, area, fecha_ingreso, fecha_salida, salario]); // Insertar todos los campos
-      await connection.close();
-      res.json({ success: true });
+        const connection = await getConnection();
+        await connection.query(`INSERT INTO MARCAS (NOMBRE) VALUES (?)`, [nombre]);
+        await connection.close();
+        res.json({ success: true });
     } catch (err) {
-      handleDbError(err, res, 'adding empleado');
+        handleDbError(err, res, 'adding marca');  // *** MODIFICACIÓN ***
     }
-  });
-  
-  
+});
 
-// Ruta para actualizar un empleado existente
+// Ruta para actualizar una marca existente
 router.post('/update/:id', async (req, res) => {
     const { id } = req.params;
     const { nombre } = req.body;
     try {
         const connection = await getConnection();
-        await connection.query(`UPDATE EMPLEADOS SET NOMBRE = ? WHERE EMPLEADO = ?`, [nombre, id]);
+        await connection.query(`UPDATE MARCAS SET NOMBRE = ? WHERE MARCA = ?`, [nombre, id]);
         await connection.close();
         res.json({ success: true });
     } catch (err) {
-        handleDbError(err, res, 'updating empleado');  
+        handleDbError(err, res, 'updating marca'); 
     }
 });
 
-// Nueva ruta DELETE para eliminar un empleado
+// Nueva ruta DELETE para eliminar una marca
 router.delete('/delete/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const connection = await getConnection();
-        await connection.query(`DELETE FROM EMPLEADO WHERE EMPLEADO = ?`, [id]);
+        await connection.query(`DELETE FROM MARCAS WHERE MARCA = ?`, [id]);
         await connection.close();
         res.json({ success: true });
     } catch (err) {
-        handleDbError(err, res, 'eliminando empleado');  
+        handleDbError(err, res, 'deleting marca');  // no borro porque se usa en otra tabla (fk)
     }
 });
 

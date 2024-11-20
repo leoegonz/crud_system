@@ -14,83 +14,79 @@ const getConnection = async () => {
 };
 
 // Función para manejo de errores de base de datos
-// *** MODIFICACIÓN ***
 const handleDbError = (err, res, action) => {
     const errorMessage = err?.odbcErrors?.[0]?.message || err.message || 'Unknown database error';
     console.error(`Error al ${action}:`, errorMessage);
     res.status(500).json({ success: false, error: `Database error while ${action}: ${errorMessage}` });
 };
 
-// Ruta para obtener todos los empleados
+// Ruta para obtener todas las categorias
 router.get('/', async (req, res) => {
     try {
         const connection = await getConnection();
-        const result = await connection.query('SELECT * FROM EMPLEADOS ORDER BY NOMBRE');
+        const result = await connection.query('SELECT * FROM CATEGORIAS ORDER BY NOMBRE');
         await connection.close();
-        res.json({ success: true, empleados: result });
+        res.json({ success: true, categorias: result });
     } catch (err) {
-        handleDbError(err, res, 'fetching empleados'); 
+        handleDbError(err, res, 'fetching categorias');  
     }
 });
 
-// Nueva ruta GET para obtener los datos de un empleade específica por su ID
-router.get('/empleado/:id', async (req, res) => {
+// Nueva ruta GET para obtener los datos de una categoria específica por su ID
+router.get('/categoria/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const connection = await getConnection();
-        const result = await connection.query(`SELECT * FROM EMPLEADOS WHERE EMPLEADO = ?`, [id]);
+        const result = await connection.query(`SELECT * FROM CATEGORIAS WHERE CATEGORIA = ?`, [id]);
         await connection.close();
 
         if (result.length > 0) {
-            res.json({ success: true, empleado: result[0] });
+            res.json({ success: true, categoria: result[0] });
         } else {
-            res.json({ success: false, error: 'Empleado no encontrado. Volver a ingresar' });
+            res.json({ success: false, error: 'Categoria no encontrada. Volver a ingresar' });
         }
     } catch (err) {
-
-        handleDbError(err, res, 'fetching empleados by ID');  // *** MODIFICACIÓN ***
+        handleDbError(err, res, 'fetching categoria by ID');  
     }
 });
 
-// Ruta para agregar una nuevo empleado
+// Ruta para agregar una nueva categoria
 router.post('/add', async (req, res) => {
-    const { nombre, apellido, direccion, pais, telefono, email, area, fecha_ingreso, fecha_salida, salario } = req.body; // recibe nombre apellido direccion
+    const { nombre } = req.body;
     try {
-      const connection = await getConnection();
-      await connection.query(`INSERT INTO EMPLEADOS (NOMBRE, APELLIDO, DIRECCION, PAIS, TELEFONO, EMAIL, AREA, FECHA_INGRESO, FECHA_SALIDA, SALARIO ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [nombre, apellido, direccion, pais, telefono, email, area, fecha_ingreso, fecha_salida, salario]); // Insertar todos los campos
-      await connection.close();
-      res.json({ success: true });
+        const connection = await getConnection();
+        await connection.query(`INSERT INTO CATEGORIAS (NOMBRE) VALUES (?)`, [nombre]);
+        await connection.close();
+        res.json({ success: true });
     } catch (err) {
-      handleDbError(err, res, 'adding empleado');
+        handleDbError(err, res, 'adding categoria');  
     }
-  });
-  
-  
+});
 
-// Ruta para actualizar un empleado existente
+// Ruta para actualizar una categoria existente
 router.post('/update/:id', async (req, res) => {
     const { id } = req.params;
     const { nombre } = req.body;
     try {
         const connection = await getConnection();
-        await connection.query(`UPDATE EMPLEADOS SET NOMBRE = ? WHERE EMPLEADO = ?`, [nombre, id]);
+        await connection.query(`UPDATE CATEGORIAS SET NOMBRE = ? WHERE CATEGORIA = ?`, [nombre, id]);
         await connection.close();
         res.json({ success: true });
     } catch (err) {
-        handleDbError(err, res, 'updating empleado');  
+        handleDbError(err, res, 'updating categoria');  
     }
 });
 
-// Nueva ruta DELETE para eliminar un empleado
+// Nueva ruta DELETE para eliminar una categoria
 router.delete('/delete/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const connection = await getConnection();
-        await connection.query(`DELETE FROM EMPLEADO WHERE EMPLEADO = ?`, [id]);
+        await connection.query(`DELETE FROM CATEGORIAS WHERE CATEGORIA = ?`, [id]);
         await connection.close();
         res.json({ success: true });
     } catch (err) {
-        handleDbError(err, res, 'eliminando empleado');  
+        handleDbError(err, res, 'deleting categoria');  
     }
 });
 
