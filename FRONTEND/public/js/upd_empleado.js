@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                window.location.href = '/list_empleados.html';
+                window.location.href = '/list_empleados.html';//redirecciona a la lisat si realiza el update
             } else {
                 alert(data.error || 'Error al actualizar el empleado.');
             }
