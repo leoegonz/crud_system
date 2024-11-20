@@ -70,10 +70,14 @@ router.post('/add', async (req, res) => {
 // Ruta para actualizar un empleado existente
 router.post('/update/:id', async (req, res) => {
     const { id } = req.params;
-    const { nombre } = req.body;
+    const { nombre, apellido, direccion, pais, telefono, email, area, fecha_ingreso, fecha_salida, salario } = req.body;
     try {
         const connection = await getConnection();
-        await connection.query(`UPDATE EMPLEADOS SET NOMBRE = ? WHERE EMPLEADO = ?`, [nombre, id]);
+        await connection.query(`
+            UPDATE EMPLEADOS 
+            SET NOMBRE = ?, APELLIDO = ?, DIRECCION = ?, PAIS = ?, TELEFONO = ?, EMAIL = ?, AREA = ?, FECHA_INGRESO = ?, FECHA_SALIDA = ?, SALARIO = ?
+            WHERE EMPLEADO = ?`, 
+            [nombre, apellido, direccion, pais, telefono, email, area, fecha_ingreso, fecha_salida, salario, id]);        
         await connection.close();
         res.json({ success: true });
     } catch (err) {
@@ -86,7 +90,7 @@ router.delete('/delete/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const connection = await getConnection();
-        await connection.query(`DELETE FROM EMPLEADO WHERE EMPLEADO = ?`, [id]);
+        await connection.query(`DELETE FROM EMPLEADOS WHERE EMPLEADO = ?`, [id]);
         await connection.close();
         res.json({ success: true });
     } catch (err) {
