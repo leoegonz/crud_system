@@ -15,6 +15,10 @@ document.addEventListener('DOMContentLoaded', function () {
                             <td>${empleado.DIRECCION}</td>
                             <td>${empleado.TELEFONO}</td>
                             <td>${empleado.EMAIL}</td>
+                            <td>${empleado.AREA}</td>
+                            <td>${empleado.FECHA_INGRESO}</td>
+                            <td>${empleado.FEHCA_SALIDA}</td>
+                            <td>${empleado.SALARIO}</td>
                             <td>
                                 <button onclick="editEmpleado(${empleado.EMPLEADO})">Actualizar</button>
                                 <button onclick="confirmDelete(${empleado.EMPLEADO})">Eliminar</button>

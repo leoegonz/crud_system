@@ -20,7 +20,8 @@
             <li class="nav-item"><a class="nav-link" href="/home.html"><i class="fas fa-home"></i> Inicio</a></li>
             <li class="nav-item"><a class="nav-link" href="list_areas.html"><i class="fas fa-cubes"></i> Lista de Áreas</a></li>
             <li class="nav-item"><a class="nav-link" href="list_paises.html"><i class="fas fa-globe"></i> Lista de Paises</a></li>
-
+            <li class="nav-item"><a class="nav-link" href="list_categorias.html"><i class="fas fa-th-list"></i> Lista de Categorías</a></li>
+            <li class="nav-item"><a class="nav-link" href="list_marcas.html"><i class="fas fa-tags"></i>Lista de Marcas</a></li>
           </ul>
         </div>
       </nav>
@@ -29,20 +30,26 @@
         <h2><b>Lista de Empleados</b></h2>
         <a href="add_empleado.html" class="add-button">Agregar Empleado</a>
         <div id="error-message" class="error-message"></div>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Dirección</th>
-                    <th>Teléfono</th>
-                    <th>Email</th>
-                    <th>Acciones</th> 
-                </tr>
-            </thead>
-            <tbody id="empleados-list"></tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Dirección</th>
+                        <th>Teléfono</th>
+                        <th>Email</th>
+                        <th>Area</th>
+                        <th>Fecha Ingreso</th>
+                        <th>Fecha Salida</th>
+                        <th>Salario</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="empleados-list"></tbody>
+            </table>
+        </div>
     </div>
     <script src="./js/list_empleados.js"></script>
 </body>
