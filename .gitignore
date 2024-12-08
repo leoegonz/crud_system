@@ -1,0 +1,7 @@
+#ignorar todo esto
+BD/
+prog4.db
+prog4.log
+node_modules/
+package-lock.json
+package.json
